@@ -44,22 +44,20 @@ const Services = ({ handleOrderPopup }) => {
               Trending Books
             </p>
             <h1 className="text-3xl font-bold">Best Books</h1>
-            <p className="text-xs text-gray-400">
-              
-            </p>
+            <p className="text-xs text-gray-400"></p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
             {ServicesData.map((service) => (
               <div
+                key={service.id}
                 data-aos="zoom-in"
                 className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
-  
+              >
                 <div className="h-[100px]">
                   <img
                     src={service.img}
                     alt=""
-                    className="max-w-[100px] block mx-auto transform -translate-y-14
-                  group-hover:scale-105  duration-300 shadow-md"
+                    className="max-w-[100px] block mx-auto transform -translate-y-14 group-hover:scale-105 duration-300 shadow-md"
                   />
                 </div>
                 <div className="p-4 text-center">
