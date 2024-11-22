@@ -40,8 +40,7 @@ const Services = ({ handleOrderPopup }) => {
             </p>
             <h1 className="text-3xl font-bold">Best Books</h1>
             <p className="text-xs text-gray-400">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Perspiciatis delectus architecto error nesciunt,
+              
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
@@ -49,7 +48,7 @@ const Services = ({ handleOrderPopup }) => {
               <div
                 data-aos="zoom-in"
                 className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
-              >
+  
                 <div className="h-[100px]">
                   <img
                     src={service.img}
