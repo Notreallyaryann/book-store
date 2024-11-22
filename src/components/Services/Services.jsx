@@ -10,21 +10,26 @@ const ServicesData = [
     img: Img1,
     title: "His Life",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "An unfiltered journey of resilience and self-discovery, capturing a life of challenges, triumphs, and boundless curiosity. Each page reveals the essence of a soul driven to learn, grow, and inspire."
+    ,
   },
   {
     id: 2,
     img: Img2,
     title: "Who's there",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "A gripping exploration of hidden truths and untold stories, 'Who's There' pulls back the curtain on secrets lurking just beyond sight. Each page brings readers closer to the shadows that shape our reality."
+
+    ,
   },
   {
     id: 3,
     img: Img3,
     title: "Lost Boy",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Lost Boy" tells the haunting story of a young soul adrift, searching for belonging in a world of shadows and dreams. A tale of courage and survival, it reveals the resilience hidden within a lost heart.
+
+  ,
   },
 ];
 
