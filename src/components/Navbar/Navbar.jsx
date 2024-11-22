@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import Logo from "../../assets/website/logo.png";
-import { FaCartShopping, FaCaretDown } from "react-icons/fa";
+import { FaCartShopping, FaCaretDown } from "react-icons/fa6";
 import DarkMode from "./DarkMode";
 
 const Menu = [
