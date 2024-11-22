@@ -27,7 +27,7 @@ const ServicesData = [
     img: Img3,
     title: "Lost Boy",
     description:
-      "Lost Boy" tells the haunting story of a young soul adrift, searching for belonging in a world of shadows and dreams. A tale of courage and survival, it reveals the resilience hidden within a lost heart.
+      "Lost Boy tells the haunting story of a young soul adrift, searching for belonging in a world of shadows and dreams. A tale of courage and survival, it reveals the resilience hidden within a lost heart."
 
   ,
   },
