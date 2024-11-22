@@ -1,38 +1,27 @@
-import React from "react";
+
+import React, { useState } from "react";
 import Logo from "../../assets/website/logo.png";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping, FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
-import { FaCaretDown } from "react-icons/fa";
 
 const Menu = [
-  {
-    id: 1,
-    name: "Home",
-    link: "/#",
-  },
-  {
-    id: 2,
-    name: "Best Seller",
-    link: "/#services",
-  },
+  { id: 1, name: "Home", link: "/#" },
+  { id: 2, name: "Best Seller", link: "/#services" },
 ];
 
 const DropdownLinks = [
-  {
-    name: "Trending Books",
-    link: "/#",
-  },
-  {
-    name: "Best Selling",
-    link: "/#",
-  },
-  {
-    name: "Authors",
-    link: "/#",
-  },
+  { name: "Trending Books", link: "/#" },
+  { name: "Best Selling", link: "/#" },
+  { name: "Authors", link: "/#" },
 ];
 
-const Navbar = ({ handleOrderPopup }) => {
+const Navbar = () => {
+  const [isOrderPopupVisible, setIsOrderPopupVisible] = useState(false);
+
+  const handleOrderPopup = () => {
+    setIsOrderPopupVisible(!isOrderPopupVisible); // Toggle popup visibility
+  };
+
   return (
     <>
       <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200">
@@ -45,9 +34,7 @@ const Navbar = ({ handleOrderPopup }) => {
               </a>
             </div>
             <div className="flex justify-between items-center gap-4">
-              <div>
-                <DarkMode />
-              </div>
+              <DarkMode />
               <ul className="hidden sm:flex items-center gap-4">
                 {Menu.map((menu) => (
                   <li key={menu.id}>
@@ -59,18 +46,13 @@ const Navbar = ({ handleOrderPopup }) => {
                     </a>
                   </li>
                 ))}
-                {/* Simple Dropdown and Links */}
+                {/* Dropdown Menu */}
                 <li className="group relative cursor-pointer">
-                  <a
-                    href="/#home"
-                    className="flex h-[72px] items-center gap-[2px]"
-                  >
+                  <a href="/#home" className="flex h-[72px] items-center gap-[2px]">
                     Quick Links{" "}
-                    <span>
-                      <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
-                    </span>
+                    <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
                   </a>
-                  <div className="absolute -left-9 z-[9999] hidden w-[150px] rounded-md bg-white p-2 text-black group-hover:block  ">
+                  <div className="absolute -left-9 z-[9999] hidden w-[150px] rounded-md bg-white p-2 text-black group-hover:block">
                     <ul className="space-y-3">
                       {DropdownLinks.map((data) => (
                         <li key={data.name}>
@@ -87,7 +69,7 @@ const Navbar = ({ handleOrderPopup }) => {
                 </li>
               </ul>
               <button
-                onClick={() => handleOrderPopup()}
+                onClick={handleOrderPopup}
                 className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
               >
                 Order
@@ -97,6 +79,22 @@ const Navbar = ({ handleOrderPopup }) => {
           </div>
         </div>
       </div>
+
+      {/* Order Popup */}
+      {isOrderPopupVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+            <button
+              onClick={handleOrderPopup}
+              className="absolute top-2 right-2 text-gray-500 hover:text-black"
+            >
+              &times;
+            </button>
+            <h2 className="text-lg font-semibold mb-4">Your Order</h2>
+            <p>Order content goes here...</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };
