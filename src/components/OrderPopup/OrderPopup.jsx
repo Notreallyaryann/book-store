@@ -16,7 +16,7 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
               <div>
                 <IoCloseOutline
                   className="text-2xl cursor-pointer "
-                  onClick={() => setOrderPopup(true)}
+                  onClick={() => setOrderPopup(false)}
                 />
               </div>
             </div>
