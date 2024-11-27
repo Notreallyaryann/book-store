@@ -3,11 +3,42 @@ import { IoCloseOutline } from "react-icons/io5";
 
 const OrderPopup = ({ orderPopup, setOrderPopup }) => {
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleOrder = () => {
-    // You can add any validation logic here before placing the order
-    setOrderPlaced(true); // Show the "Order Placed" popup
-    setOrderPopup(false); // Close the order form popup
+  // Formspree endpoint
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeoqrzlq";
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleOrder = async () => {
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setOrderPlaced(true); // Show the "Order Placed" popup
+        setOrderPopup(false); // Close the order form popup
+        setFormData({ name: "", email: "", address: "" }); // Reset form
+        setErrorMessage(""); // Clear error message
+      } else {
+        throw new Error("Failed to place the order. Please try again.");
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -31,18 +62,30 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
             <div className="mt-4">
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 placeholder="Name"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
+                required
               />
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="Email"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
+                required
               />
               <input
                 type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
                 placeholder="Address"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
+                required
               />
               <div className="flex justify-center">
                 <button
@@ -52,6 +95,9 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
                   Order Now
                 </button>
               </div>
+              {errorMessage && (
+                <p className="text-red-500 text-center mt-4">{errorMessage}</p>
+              )}
             </div>
           </div>
         </div>
@@ -68,7 +114,9 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
                 onClick={() => setOrderPlaced(false)}
               />
             </div>
-            <p className="mt-4 text-center">Thank you! Your order has been placed successfully.</p>
+            <p className="mt-4 text-center">
+              Thank you! Your order has been placed successfully.
+            </p>
           </div>
         </div>
       )}
